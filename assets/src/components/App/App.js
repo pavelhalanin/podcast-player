@@ -1,4 +1,7 @@
 class App {
+  static id_root_search = "search_root";
+  static id_root_cards = "cards_root";
+
   static render() {
     const DIV = document.getElementById("root");
 
@@ -10,7 +13,8 @@ class App {
     }
 
     DIV.innerHTML = `
-      <div id="cards" class="cards__root"></div>
+      <div id="${this.id_root_search}" class="search__wrapper"></div>
+      <div id="${this.id_root_cards}" class="cards__wrapper"></div>
     `;
   }
 }

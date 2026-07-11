@@ -1,0 +1,16 @@
+.search__wrapper {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 8px 0;
+}
+
+.search__wrapper input {
+  width: calc(170px * 5 + 8px * 4);
+  border: 2px solid #06c;
+  padding: 8px;
+  border-radius: 8px;
+}

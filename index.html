@@ -8,15 +8,26 @@
 
     <link rel="stylesheet" href="./assets/src/components/App/App.css">
     <link rel="stylesheet" href="./assets/src/components/Cards/Cards.css">
+    <link rel="stylesheet" href="./assets/src/components/Search/Search.css">
 </head>
 
 <body>
     <div id="root"></div>
     <script src="./assets/src/components/App/App.js"></script>
     <script src="./assets/src/components/Cards/Cards.js"></script>
+    <script src="./assets/src/components/Search/Search.js"></script>
     <script>
-        App.render();
-        Cards.render();
+        (async function () {
+            try {
+                App.render();
+                await Cards.render();
+                Search.render();
+            }
+            catch (exception) {
+                console.error(exception);
+                alert(exception);
+            }
+        })();
     </script>
 </body>
 

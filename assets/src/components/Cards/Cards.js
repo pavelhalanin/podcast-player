@@ -25,10 +25,10 @@ class Cards {
   }
 
   static async render() {
-    const DIV = document.getElementById("cards");
+    const DIV = document.getElementById(App.id_root_cards);
 
     if (!DIV) {
-      const MESSAGE = `Узел не найден: #cards`;
+      const MESSAGE = `Узел не найден: #${App.id_root_cards}`;
       console.error(MESSAGE);
       alert(MESSAGE);
       return;
