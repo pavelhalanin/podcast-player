@@ -1,0 +1,59 @@
+class Cards {
+  static async fetch() {
+    const BACKEND_URL = "https://listen-api-test.listennotes.com/api/v2";
+
+    const FETCH_URL = new URL(`${BACKEND_URL}/best_podcasts`);
+    FETCH_URL.searchParams.append("sort", "recent_published_first");
+    FETCH_URL.searchParams.append("page", "1");
+    const URI = FETCH_URL.toString();
+
+    const RESPONSE = await fetch(URI, {
+      method: "GET",
+      headers: {
+        "X-ListenAPI-Key": "",
+      },
+    });
+
+    const HTTP_STATUS = RESPONSE.status;
+
+    if (HTTP_STATUS !== 200) {
+      throw new Error(`HTTP ${HTTP_STATUS}`);
+    }
+
+    const DATA = await RESPONSE.json();
+    return DATA;
+  }
+
+  static async render() {
+    const DIV = document.getElementById("cards");
+
+    if (!DIV) {
+      const MESSAGE = `Узел не найден: #cards`;
+      console.error(MESSAGE);
+      alert(MESSAGE);
+      return;
+    }
+
+    const DATA = await this.fetch();
+
+    DIV.innerHTML = `
+      <ul class="cards__list">
+        ${DATA.podcasts
+          .map((e) => {
+            return `
+          <li>
+            <button onclick="alert('open modal by id ${e.id}')">
+              <div class="cards__card_image_block">
+                <img src="${e.image}" alt=""/>
+              </div>
+              <div class="cards__card_text_block">
+                ${e.title}
+                </div>
+            </button>
+          </li>`;
+          })
+          .join("")}
+      </ul>
+    `;
+  }
+}
