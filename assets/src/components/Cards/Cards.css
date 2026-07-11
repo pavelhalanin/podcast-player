@@ -55,9 +55,19 @@
   height: auto;
 }
 
-.cards__card_text_block {
+.cards__text_block {
   width: calc(170px - 8px * 2);
   padding: 8px;
-  height: 4em;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cards__title_block,
+.cards__publisher_block {
+  height: 16px;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

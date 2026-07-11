@@ -46,9 +46,14 @@ class Cards {
               <div class="cards__card_image_block">
                 <img src="${e.image}" alt=""/>
               </div>
-              <div class="cards__card_text_block">
-                ${e.title}
+              <div class="cards__text_block">
+                <div class="cards__title_block">
+                  ${e.title}
                 </div>
+                <div class="cards__publisher_block">
+                  ${e.title === e.publisher ? "Solo podcast" : e.publisher}
+                </div>
+              </div>
             </button>
           </li>`;
           })
