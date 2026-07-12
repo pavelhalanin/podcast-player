@@ -1,10 +1,44 @@
 class App {
   static routes = {
+    '': async () => await HomePage.render(),
     "#/": async () => await HomePage.render(),
     "#/about": () => AboutPage.render(),
     "#/post/id": () => PoscastByIdPage.render(),
     "#/404": () => Error404Page.render(),
   };
+
+  static async render() {
+    const DIV = document.getElementById("root");
+
+    if (!DIV) {
+      alert("Узел не найден: #root");
+      return;
+    }
+
+    DIV.innerHTML = `
+      <div class="app__wrapper">
+        <div class="app__menu">
+          <ul>
+            <li>
+              <a data-spa-link href="#/">Home</a>
+            </li>
+            <li>
+              <a data-spa-link href="#/about">About</a>
+            </li>
+            <li>
+              <a data-spa-link href="#/404">404</a>
+            </li>
+          </ul>
+        </div>
+        <div class="app__content">
+          <div id="app"></div>
+        </div>
+      </div>
+    `;
+
+    App.renderRoute();
+    App.init();
+  }
 
   static init() {
     document.addEventListener("click", (e) => {
@@ -13,14 +47,14 @@ class App {
         e.preventDefault();
         const href = link.getAttribute("href");
         history.pushState(null, "", href);
-        this.render();
+        this.renderRoute();
       }
     });
 
-    window.addEventListener("popstate", render);
+    window.addEventListener("popstate", this.renderRoute);
   }
 
-  static async render() {
+  static async renderRoute() {
     const path = window.location.hash;
     const app = document.getElementById("app");
 
