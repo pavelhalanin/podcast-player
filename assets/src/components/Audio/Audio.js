@@ -9,6 +9,7 @@ class AudioHelper {
     AUDRIO_ROOT.innerHTML = this.render();
 
     const AUDIO = this.getAudio();
+    AUDIO.setAttribute("src", localStorage.getItem("audio") || "");
 
     const THIS = this;
 
@@ -46,6 +47,7 @@ class AudioHelper {
   static setUrl(url) {
     const AUDIO = this.getAudio();
     AUDIO.setAttribute("src", url);
+    localStorage.setItem("audio", url);
   }
 
   static togglePlay() {
@@ -226,7 +228,9 @@ class AudioHelper {
             >
           </div>
           <div class="audio__controls">
-            <button id="audio__play_stop_button" onclick="AudioHelper.togglePlay()"></button>
+            <button id="audio__play_stop_button" onclick="AudioHelper.togglePlay()">
+              ▶
+            </button>
             <div class="audio__mute_volume">
               <button id="audio__mute_button" onclick="AudioHelper.mute()">🔊</button>
               <input
