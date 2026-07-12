@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcast Player</title>
+
+    <link rel="stylesheet" href="./assets/src/app.css">
+    <link rel="stylesheet" href="./assets/src/pages/HomePage/Cards/Cards.css">
+    <link rel="stylesheet" href="./assets/src/pages/HomePage/Search/Search.css">
+    <link rel="stylesheet" href="./assets/src/components/Audio/Audio.css">
+    <link rel="stylesheet" href="./assets/src/pages/PoscastByIdPage/PoscastByIdPage.css">
+</head>
+
+<body>
+    <div id="root"></div>
+    <div id="root_audio"></div>
+
+    <script src="./assets/src/app.js"></script>
+    <script src="./assets/src/pages/AboutPage/AboutPage.js"></script>
+    <script src="./assets/src/pages/Error404Page/Error404Page.js"></script>
+    <script src="./assets/src/pages/HomePage/HomePage.js"></script>
+    <script src="./assets/src/pages/HomePage/Cards/Cards.js"></script>
+    <script src="./assets/src/pages/HomePage/Search/Search.js"></script>
+    <script src="./assets/src/pages/PoscastByIdPage/PoscastByIdPage.js"></script>
+    <script src="./assets/src/utils/sleep.js"></script>
+    <script src="./assets/src/components/Audio/Audio.js"></script>
+    <script src="./assets/src/pages/HomePage/SearchCards/SearchCards.js"></script>
+    <script src="./assets/src/pages/MyPlaylist/MyPlaylist.js"></script>
+
+    <script>
+        App.render();
+        AudioHelper.init();
+    </script>
+</body>
+
+</html>
