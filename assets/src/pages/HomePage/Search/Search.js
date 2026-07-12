@@ -71,7 +71,10 @@ class Search {
 
   static render() {
     return `
-      <form onSubmit="event.preventDefault(); ${this.name}.onSubmit()">
+      <form
+        class="search__wrapper"
+        onSubmit="event.preventDefault(); ${this.name}.onSubmit()"
+      >
         <input
           id="search"
           type="search"
