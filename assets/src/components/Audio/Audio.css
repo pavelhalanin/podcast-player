@@ -1,0 +1,94 @@
+#audio[src=""] + .audio__wrapper {
+  display: none;
+}
+
+.audio__wrapper {
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  /* height: 50px; */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 8px 0;
+}
+
+.audio__content {
+  max-width: 600px;
+  margin: 0 auto;
+
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.audio__range input {
+  width: 100%;
+}
+
+.audio__controls {
+  display: flex;
+  gap: 8px;
+}
+
+.audio__controls > div {
+  background-color: black;
+  border: 1px solid #06c;
+}
+
+.audio__controls #audio__play_stop_button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  border: 1px solid white;
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+}
+
+.audio__controls .audio__mute_volume {
+  background-color: transparent;
+  color: white;
+  border: none;
+  border: 1px solid white;
+  height: 32px;
+  border-radius: 32px;
+
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.audio__controls #audio__mute_button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  height: 32px;
+}
+
+.audio__controls #audio__time {
+  background-color: transparent;
+  color: white;
+  border: none;
+  border: 1px solid white;
+  height: 32px;
+  border-radius: 32px;
+
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
+
+.audio__content .audio__speed {
+  background-color: transparent;
+  color: white;
+  border: none;
+  border: 1px solid white;
+  height: 32px;
+  border-radius: 32px;
+
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+}
