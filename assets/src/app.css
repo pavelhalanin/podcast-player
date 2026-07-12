@@ -59,7 +59,7 @@ body {
 
 .app__content {
   width: 100%;
-  height: calc(100% - 8px * 2);
+  height: calc(100% - 8px - 82px);
   overflow-y: scroll;
-  padding: 8px 32px;
+  padding: 8px 32px 82px 32px;
 }

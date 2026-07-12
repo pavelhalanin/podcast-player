@@ -44,6 +44,10 @@ class PoscastByIdPage {
                 />
               </div>
               <a href="${e.audio}">Слушать</a>
+              <button onclick="
+                AudioHelper.setUrl('${e.audio}');
+                AudioHelper.togglePlay();
+              ">Слушать</button>
             </li>
           `;
           })
