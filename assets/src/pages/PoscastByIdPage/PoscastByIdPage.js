@@ -29,25 +29,31 @@ class PoscastByIdPage {
           style="max-width: 300px; max-height: 300px; width: auto; height: auto;"
         />
       </div>
-      <ul>
+      <ul class="episodes__list">
         ${DATA.episodes
           .map((e, i) => {
             console.log(e);
+            const SECONDS = e.audio_length_sec;
+            const TIME = AudioHelper.formatTime(SECONDS);
+
             return `
             <li>
-              <div>${e.title}</div>
-             <div>
-                <img
-                  src="${e.image}"
-                  alt=""
-                  style="max-width: 100px; max-height: 100px; width: auto; height: auto;"
-                />
+              <div class="episodes__image">
+                <img src="${e.image}" alt="" >
               </div>
-              <a href="${e.audio}">Слушать</a>
-              <button onclick="
-                AudioHelper.setUrl('${e.audio}');
-                AudioHelper.togglePlay();
-              ">Слушать</button>
+              <div>
+                <div>${e.title}</div>
+                <div class="episodes__time">${TIME} (${SECONDS} seconds)</div>
+                <button
+                  class="episodes__button"
+                  onclick="
+                    AudioHelper.setUrl('${e.audio}');
+                    AudioHelper.togglePlay();
+                  "
+                >
+                  Start audio
+                </button>
+              </div>
             </li>
           `;
           })
