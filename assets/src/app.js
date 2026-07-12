@@ -1,12 +1,4 @@
 class App {
-  static routes = {
-    "": async () => await HomePage.render(),
-    "#/": async () => await HomePage.render(),
-    "#/about": () => AboutPage.render(),
-    "#/post/id": () => PoscastByIdPage.render(),
-    "#/404": () => Error404Page.render(),
-  };
-
   static async render() {
     const DIV = document.getElementById("root");
 
@@ -63,10 +55,24 @@ class App {
       return;
     }
 
-    const page = this.routes[path]
-      ? await this.routes[path]()
-      : this.routes["#/404"]();
+    switch (path) {
+      case "":
+      case "#/":
+        app.innerHTML = await HomePage.render();
+        Search.init();
+        return;
 
-    app.innerHTML = page;
+      case "#/about":
+        app.innerHTML = AboutPage.render();
+        return;
+
+      case "#/post/id":
+        app.innerHTML = PoscastByIdPage.render();
+        return;
+
+      default:
+        app.innerHTML = Error404Page.render();
+        return;
+    }
   }
 }

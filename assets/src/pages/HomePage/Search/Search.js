@@ -1,4 +1,31 @@
 class Search {
+  static init() {
+    function debounce(fn, delay) {
+      let timer = null;
+      return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          fn.apply(this, args);
+        }, delay);
+      };
+    }
+
+    const searchInput = document.getElementById("search");
+
+    function performSearch(query) {
+      console.log("Вы пытаетесь найти:", query);
+    }
+
+    const debouncedSearch = debounce(performSearch, 1000);
+
+    searchInput.addEventListener("input", (e) => {
+      const value = e.target.value.trim();
+      if (value) {
+        debouncedSearch(value);
+      }
+    });
+  }
+
   static async fetch(search, page = 1) {
     const LIMIT = 10;
 
