@@ -6,28 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Podcast Player</title>
 
-    <link rel="stylesheet" href="./assets/src/components/App/App.css">
-    <link rel="stylesheet" href="./assets/src/components/Cards/Cards.css">
-    <link rel="stylesheet" href="./assets/src/components/Search/Search.css">
+    <link rel="stylesheet" href="./assets/src/app.css">
+    <link rel="stylesheet" href="./assets/src/pages/HomePage/Cards/Cards.css">
+    <link rel="stylesheet" href="./assets/src/pages/HomePage/Search/Search.css">
 </head>
 
 <body>
-    <div id="root"></div>
-    <script src="./assets/src/components/App/App.js"></script>
-    <script src="./assets/src/components/Cards/Cards.js"></script>
-    <script src="./assets/src/components/Search/Search.js"></script>
+    <div class="app__wrapper">
+        <div class="app__menu">
+            <ul>
+                <li>
+                    <a data-spa-link href="#/">Home</a>
+                </li>
+                <li>
+                    <a data-spa-link href="#/about">About</a>
+                </li>
+                <li>
+                    <a data-spa-link href="#/404">404</a>
+                </li>
+            </ul>
+        </div>
+        <div class="app__content">
+            <div id="app"></div>
+        </div>
+    </div>
+
+    <script src="./assets/src/app.js"></script>
+    <script src="./assets/src/pages/AboutPage/AboutPage.js"></script>
+    <script src="./assets/src/pages/Error404Page/Error404Page.js"></script>
+    <script src="./assets/src/pages/HomePage/HomePage.js"></script>
+    <script src="./assets/src/pages/HomePage/Cards/Cards.js"></script>
+    <script src="./assets/src/pages/HomePage/Search/Search.js"></script>
+    <script src="./assets/src/pages/PoscastByIdPage/PoscastByIdPage.js"></script>
+
     <script>
-        (async function () {
-            try {
-                App.render();
-                await Cards.render();
-                Search.render();
-            }
-            catch (exception) {
-                console.error(exception);
-                alert(exception);
-            }
-        })();
+        App.render();
+        App.init();
     </script>
 </body>
 

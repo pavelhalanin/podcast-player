@@ -43,16 +43,7 @@ class Search {
   }
 
   static render() {
-    const DIV = document.getElementById(App.id_root_search);
-
-    if (!DIV) {
-      const MESSAGE = `Узел не найден: #${App.id_root_search}`;
-      console.error(MESSAGE);
-      alert(MESSAGE);
-      return;
-    }
-
-    DIV.innerHTML = `
+    return `
       <form onSubmit="event.preventDefault(); ${this.name}.onSubmit()">
         <input
           id="search"
