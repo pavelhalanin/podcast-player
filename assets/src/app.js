@@ -3,7 +3,7 @@ class App {
     const DIV = document.getElementById("root");
 
     if (!DIV) {
-      alert("Узел не найден: #root");
+      alert("HTML node not found: #root");
       return;
     }
 
@@ -51,7 +51,7 @@ class App {
     const app = document.getElementById("app");
 
     if (!app) {
-      alert("Узел не найден: #app");
+      alert("HTML node not found: #app");
       return;
     }
 
@@ -65,7 +65,7 @@ class App {
 
       if (path.startsWith("#/posts/")) {
         const ID = path.replace("#/posts/", "");
-        app.innerHTML = `Загрузка по ID = ${ID}`;
+        app.innerHTML = `Loading by id = ${ID}...`;
         await sleep(1000);
         app.innerHTML = await PoscastByIdPage.render({
           id: ID,
@@ -76,7 +76,7 @@ class App {
       switch (path) {
         case "":
         case "#/":
-          app.innerHTML = "Загрузка";
+          app.innerHTML = "Loading...";
           await sleep(1000);
           app.innerHTML = await HomePage.render();
           window.location.hash = "#/";

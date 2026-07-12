@@ -2,7 +2,7 @@ class AudioHelper {
   static init() {
     const AUDRIO_ROOT = document.getElementById("root_audio");
     if (!AUDRIO_ROOT) {
-      alert("Узел не найден: #root_audio");
+      alert("HTML node not found: #root_audio");
       return;
     }
 
@@ -36,7 +36,7 @@ class AudioHelper {
   static getAudio() {
     const NODE = document.getElementById("audio");
     if (!NODE) {
-      alert("Узел не найден: #audio");
+      alert("HTML node not found: #audio");
       return;
     }
 
@@ -54,7 +54,7 @@ class AudioHelper {
     const BUTTON = document.getElementById("audio__play_stop_button");
 
     if (!BUTTON) {
-      throw new Error(`Узел не найден: #audio__play_stop_button`);
+      throw new Error(`HTML node not found: #audio__play_stop_button`);
     }
 
     if (AUDIO.paused) {
@@ -196,14 +196,14 @@ class AudioHelper {
 
     const SPEED_RANGE = document.getElementById("audio__speed_range");
     if (!SPEED_RANGE) {
-      throw new Error(`Узел не найден: #audio__speed_range`);
+      throw new Error(`HTML node not found: #audio__speed_range`);
     }
 
     SPEED_RANGE.value = speed;
 
     const SPEED_VALUE = document.getElementById("audio__speed_value");
     if (!SPEED_VALUE) {
-      throw new Error(`Узел не найден: #audio__speed_value`);
+      throw new Error(`HTML node not found: #audio__speed_value`);
     }
 
     SPEED_VALUE.innerHTML = Number(speed).toFixed(2);
