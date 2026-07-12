@@ -25,6 +25,11 @@ class Cards {
   }
 
   static async render() {
+    const SEARCH = Search.getLocalStorageSearch() || "";
+    if (SEARCH) {
+      return "";
+    }
+
     const DATA = await this.fetch();
 
     return `

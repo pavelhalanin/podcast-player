@@ -3,6 +3,7 @@ class HomePage {
     return `
       ${Search.render()}
       ${await Cards.render()}
+      ${await SearchCards.render()}
     `;
   }
 }

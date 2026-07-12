@@ -1,5 +1,7 @@
 class Search {
   static init() {
+    const THIS = this;
+
     function debounce(fn, delay) {
       let timer = null;
       return function (...args) {
@@ -14,6 +16,7 @@ class Search {
 
     function performSearch(query) {
       console.log("Вы пытаетесь найти:", query);
+      THIS.onSubmit(query);
     }
 
     const debouncedSearch = debounce(performSearch, 1000);
@@ -64,12 +67,21 @@ class Search {
 
   static async onSubmit() {
     const SEARCH = this.getSearch();
-    const DATA = await this.fetch(SEARCH);
-    alert(`Найдено: ${DATA.results.length} шт. Смотри лог.`);
-    console.log(DATA);
+    this.setLocalStorageSearch(SEARCH);
+    App.render();
+  }
+
+  static setLocalStorageSearch(search) {
+    localStorage.setItem("search", search);
+  }
+
+  static getLocalStorageSearch(search) {
+    return localStorage.getItem("search");
   }
 
   static render() {
+    const SEARCH = Search.getLocalStorageSearch() || "";
+
     return `
       <form
         class="search__wrapper"
@@ -78,6 +90,7 @@ class Search {
         <input
           id="search"
           type="search"
+          value="${SEARCH}"
         >
       </form>
     `;
