@@ -18,6 +18,9 @@ class App {
               <a data-spa-link href="#/about">About</a>
             </li>
             <li>
+              <a data-spa-link href="#/my-playlist">My Playlist</a>
+            </li>
+            <li>
               <a data-spa-link href="#/404">404</a>
             </li>
           </ul>
@@ -85,6 +88,10 @@ class App {
 
         case "#/about":
           app.innerHTML = AboutPage.render();
+          return;
+
+        case "#/my-playlist":
+          app.innerHTML = MyPlaylist.render();
           return;
 
         default:
