@@ -33,7 +33,7 @@ class Cards {
           .map((e) => {
             return `
           <li>
-            <a data-spa-link href="#/post/id/${e.id}">
+            <a data-spa-link href="#/posts/${e.id}">
               <div class="cards__card_image_block">
                 <img src="${e.image}" alt=""/>
               </div>

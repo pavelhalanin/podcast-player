@@ -58,13 +58,13 @@ class App {
     try {
       console.log("path", path);
 
-      if (path == "#/post/id") {
+      if (path == "#/posts/" || path == "#/posts") {
         app.innerHTML = Error404Page.render();
         return;
       }
 
-      if (path.startsWith("#/post/id")) {
-        const ID = path.replace("#/post/id/", "");
+      if (path.startsWith("#/posts/")) {
+        const ID = path.replace("#/posts/", "");
         app.innerHTML = `Загрузка по ID = ${ID}`;
         await sleep(1000);
         app.innerHTML = await PoscastByIdPage.render({
