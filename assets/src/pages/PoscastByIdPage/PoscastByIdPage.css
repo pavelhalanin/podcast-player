@@ -36,12 +36,14 @@
   height: auto;
 }
 
-.episodes__time {
-  font-size: 1.5em;
-  padding: 8px 0;
+.episodes__text_block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .episodes__button {
+  max-width: 100px;
   background-color: transparent;
   border: 1px solid white;
   color: white;
