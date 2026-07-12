@@ -22,7 +22,7 @@
   list-style-type: none;
 }
 
-.cards__list > li > button {
+.cards__list > li > a {
   width: 170px;
   border: 1px solid #06c;
 
@@ -34,10 +34,14 @@
   margin: 0;
 
   transition: all 1s ease;
+
+  color: white;
+  text-decoration: none;
+  display: block;
 }
 
-.cards__list > li > button:hover {
-  background-color: #1f1f1f;
+.cards__list > li > a:hover {
+  box-shadow: 0 0 16px white;
   color: white;
 }
 
