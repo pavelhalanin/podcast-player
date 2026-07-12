@@ -1,6 +1,6 @@
 class App {
   static routes = {
-    '': async () => await HomePage.render(),
+    "": async () => await HomePage.render(),
     "#/": async () => await HomePage.render(),
     "#/about": () => AboutPage.render(),
     "#/post/id": () => PoscastByIdPage.render(),
@@ -17,7 +17,7 @@ class App {
 
     DIV.innerHTML = `
       <div class="app__wrapper">
-        <div class="app__menu">
+        <div class="app__menu app__scroll_block">
           <ul>
             <li>
               <a data-spa-link href="#/">Home</a>
@@ -30,7 +30,7 @@ class App {
             </li>
           </ul>
         </div>
-        <div class="app__content">
+        <div class="app__content app__scroll_block">
           <div id="app"></div>
         </div>
       </div>

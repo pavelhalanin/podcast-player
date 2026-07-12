@@ -17,6 +17,12 @@ body {
   height: 100%;
 }
 
+.app__scroll_block {
+  scrollbar-width: 1em;
+  scrollbar-color: rgb(0, 0, 0) #06c;
+  overflow-y: scroll;
+}
+
 .app__wrapper {
   width: 100%;
   height: 100%;
