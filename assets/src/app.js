@@ -79,8 +79,8 @@ class App {
           app.innerHTML = "Loading...";
           await sleep(1000);
           app.innerHTML = await HomePage.render();
-          window.location.hash = "#/";
           Search.init();
+          window.location.hash = "#/";
           return;
 
         case "#/about":
