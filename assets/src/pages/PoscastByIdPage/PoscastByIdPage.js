@@ -1,7 +1,7 @@
 class PoscastByIdPage {
-  static render({ postId = "" }) {
+  static render(props) {
     return `
-      <p>Post id = '${postId}'</p>
+      <p>Post id = ${props.id}</p>
     `;
   }
 }

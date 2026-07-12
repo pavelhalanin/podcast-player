@@ -33,7 +33,7 @@ class Cards {
           .map((e) => {
             return `
           <li>
-            <button onclick="alert('open modal by id ${e.id}')">
+            <a data-spa-link href="#/post/id/${e.id}">
               <div class="cards__card_image_block">
                 <img src="${e.image}" alt=""/>
               </div>
@@ -45,7 +45,7 @@ class Cards {
                   ${e.title === e.publisher ? "Solo podcast" : e.publisher}
                 </div>
               </div>
-            </button>
+            </a>
           </li>`;
           })
           .join("")}

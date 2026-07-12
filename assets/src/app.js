@@ -55,6 +55,19 @@ class App {
       return;
     }
 
+    console.log("path", path);
+
+    if (path == "#/post/id") {
+      app.innerHTML = Error404Page.render();
+      return;
+    }
+
+    if (path.startsWith("#/post/id")) {
+      const ID = path.replace("#/post/id/", "");
+      app.innerHTML = PoscastByIdPage.render({ id: ID });
+      return;
+    }
+
     switch (path) {
       case "":
       case "#/":
@@ -64,10 +77,6 @@ class App {
 
       case "#/about":
         app.innerHTML = AboutPage.render();
-        return;
-
-      case "#/post/id":
-        app.innerHTML = PoscastByIdPage.render();
         return;
 
       default:
