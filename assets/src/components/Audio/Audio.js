@@ -9,7 +9,13 @@ class AudioHelper {
     AUDRIO_ROOT.innerHTML = this.render();
 
     const AUDIO = this.getAudio();
-    AUDIO.setAttribute("src", localStorage.getItem("audio") || "");
+    const SRC = localStorage.getItem("audio") || "";
+    AUDIO.setAttribute("src", SRC);
+    if (SRC.length > 0) {
+      const DURATION = this.getAudioDurationMinus10(SRC);
+      console.log(DURATION);
+      AUDIO.currentTime = DURATION;
+    }
 
     const THIS = this;
 
@@ -30,6 +36,8 @@ class AudioHelper {
 
       AUDIO_RANGE.value = (INFO.currentTime / INFO.duration) * 100;
 
+      THIS.setAudioDuration(AUDIO.getAttribute("src"), INFO.currentTime);
+
       AUDIO_TIME.innerHTML = `${INFO.currentTimeFormatted} / ${INFO.durationFormatted}`;
     });
   }
@@ -48,6 +56,9 @@ class AudioHelper {
     const AUDIO = this.getAudio();
     AUDIO.setAttribute("src", url);
     localStorage.setItem("audio", url);
+
+    const DURATION = this.getAudioDurationMinus10(url);
+    AUDIO.currentTime = DURATION;
   }
 
   static togglePlay() {
@@ -209,6 +220,48 @@ class AudioHelper {
     }
 
     SPEED_VALUE.innerHTML = Number(speed).toFixed(2);
+  }
+
+  static getAudioDurations() {
+    const VALUE = localStorage.getItem("audio_time");
+
+    if (!VALUE) {
+      localStorage.setItem("audio_time", "{}");
+    }
+
+    const OBJ = localStorage.getItem("audio_time");
+
+    let obj = {};
+    if (VALUE) {
+      try {
+        obj = JSON.parse(OBJ);
+      } catch (exception) {
+        obj = {};
+      }
+    }
+
+    return obj;
+  }
+
+  static setAudioDuration(src, duration) {
+    const OBJ = this.getAudioDurations();
+    OBJ[src] = duration;
+    const STR = JSON.stringify(OBJ);
+    localStorage.setItem("audio_time", STR);
+  }
+
+  static getAudioDuration(src) {
+    const OBJ = this.getAudioDurations();
+    return OBJ[src] || 0;
+  }
+
+  static getAudioDurationMinus10(src) {
+    const DURATION = this.getAudioDuration(src);
+    if (DURATION <= 10) {
+      return 0;
+    }
+
+    return Math.round(DURATION - 10);
   }
 
   static render() {

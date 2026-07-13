@@ -65,6 +65,9 @@ class MyPlaylist {
       <p>My Playlist</p>
       <ul class="episodes__list">
         ${ARRAY.map((e) => {
+          const SRC = e.audio;
+          const START_SECONDS = AudioHelper.getAudioDurationMinus10(SRC);
+          const START_MINUTES_STR = AudioHelper.formatTime(START_SECONDS);
           return `
             <li>
               <div class="episodes__image">
@@ -83,6 +86,7 @@ class MyPlaylist {
                     Remove from playlist
                   </button>
                 </div>
+                <p>Start playlist on: ${START_MINUTES_STR} (${START_SECONDS} seconds)</p>
                 <div>
                   <button
                     class="episodes__button"
