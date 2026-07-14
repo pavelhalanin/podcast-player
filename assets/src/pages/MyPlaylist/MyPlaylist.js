@@ -77,13 +77,13 @@ class MyPlaylist {
                 <div>${e.title}</div>
                 <div>
                   <button
-                    class="episodes__button" style="color: red; width: 300px;"
+                    class="episodes__button"
                     onclick="
                       MyPlaylist.unlikeById('${e.id}');
                       App.render();
                     "
                   >
-                    Remove from playlist
+                    🗑️ Remove from playlist
                   </button>
                 </div>
                 <p>Start playlist on: ${START_MINUTES_STR} (${START_SECONDS} seconds)</p>

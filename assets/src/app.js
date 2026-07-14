@@ -21,6 +21,9 @@ class App {
               <a data-spa-link href="#/my-playlist">My Playlist</a>
             </li>
             <li>
+              <a data-spa-link href="#/my-favorite-publishers">My Favorite Publishers</a>
+            </li>
+            <li>
               <a data-spa-link href="#/404">404</a>
             </li>
           </ul>
@@ -92,6 +95,10 @@ class App {
 
         case "#/my-playlist":
           app.innerHTML = MyPlaylist.render();
+          return;
+
+        case "#/my-favorite-publishers":
+          app.innerHTML = MyFavoriteEdisodes.render();
           return;
 
         default:

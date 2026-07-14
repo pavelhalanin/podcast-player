@@ -33,6 +33,37 @@ class PoscastByIdPage {
   static async render(props = { id: "" }) {
     const DATA = await this.fetchById(props.id);
 
+    const IS_LIKE = MyFavoriteEdisodes.isInFavoriteById(DATA.id);
+
+    const DISLIKE_BUTTON = `
+      <button
+        class="episodes__button"
+        onclick="
+          MyFavoriteEdisodes.unlikeById('${DATA.id}');
+          this.remove();
+        "
+      >
+        🗑️ Remove this publisher from favorite episodes list
+      </button>
+    `;
+
+    const LIKE_BUTTON = `
+      <button
+        class="episodes__button"
+        onclick="
+          MyFavoriteEdisodes.like({
+            id: '${DATA.id}',
+            title: '${this.foo(DATA.title)}',
+            image: '${DATA.image}',
+            publisher: '${this.foo(DATA.publisher)}',
+          });
+          this.remove();
+        "
+      >
+        ❤️ Add this publisher to favorite episodes list
+      </button>
+    `;
+
     return `
       <h2>${DATA.title}</h2>
       <p>${DATA.description}</p>
@@ -47,6 +78,9 @@ class PoscastByIdPage {
           style="max-width: 300px; max-height: 300px; width: auto; height: auto;"
         />
       </div>
+
+      ${IS_LIKE ? DISLIKE_BUTTON : LIKE_BUTTON}
+
       <ul class="episodes__list">
         ${DATA.episodes
           .map((e, i) => {
@@ -91,7 +125,7 @@ class PoscastByIdPage {
                           this.remove();
                         "
                       >
-                        Remove from playlist
+                        🗑️ Remove from playlist
                       </button>
                     `
                       : `
@@ -107,7 +141,7 @@ class PoscastByIdPage {
                           this.remove();
                         "
                       >
-                        Add to playlist
+                        ❤️ Add to playlist
                       </button>
                     `
                   }
