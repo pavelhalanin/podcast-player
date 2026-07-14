@@ -13,7 +13,6 @@ class AudioHelper {
     AUDIO.setAttribute("src", SRC);
     if (SRC.length > 0) {
       const DURATION = this.getAudioDurationMinus10(SRC);
-      console.log(DURATION);
       AUDIO.currentTime = DURATION;
     }
 
@@ -52,17 +51,38 @@ class AudioHelper {
     return NODE;
   }
 
-  static setUrl(url) {
+  static async setUrl(url) {
     const AUDIO = this.getAudio();
-    AUDIO.setAttribute("src", url);
-    localStorage.setItem("audio", url);
+    if (!AUDIO) {
+      return;
+    }
 
     const DURATION = this.getAudioDurationMinus10(url);
-    AUDIO.currentTime = DURATION;
+
+    AUDIO.pause();
+
+    AUDIO.src = url;
+    localStorage.setItem("audio", url);
+
+    if (AUDIO.readyState < 1) {
+      await new Promise((resolve) => {
+        AUDIO.addEventListener("loadedmetadata", resolve, { once: true });
+      });
+    }
+
+    if (!isNaN(DURATION) && DURATION > 0) {
+      AUDIO.currentTime = DURATION;
+    }
+
+    const BUTTON = document.getElementById("audio__play_stop_button");
+    if (BUTTON) BUTTON.innerHTML = "▶";
   }
 
-  static togglePlay() {
+  static async togglePlay() {
     const AUDIO = this.getAudio();
+    if (!AUDIO) {
+      return;
+    }
 
     const BUTTON = document.getElementById("audio__play_stop_button");
 
@@ -70,12 +90,20 @@ class AudioHelper {
       throw new Error(`HTML node not found: #audio__play_stop_button`);
     }
 
-    if (AUDIO.paused) {
-      AUDIO.play();
-      BUTTON.innerHTML = "⏸";
-    } else {
-      AUDIO.pause();
-      BUTTON.innerHTML = "▶";
+    try {
+      if (AUDIO.paused) {
+        await AUDIO.play();
+        BUTTON.innerHTML = "⏸";
+      } else {
+        AUDIO.pause();
+        BUTTON.innerHTML = "▶";
+      }
+    } catch (error) {
+      if (error.name === "AbortError") {
+        console.log("Воспроизведение прервано (pause/load) – это нормально");
+      } else {
+        console.log("Ошибка воспроизведения:", error);
+      }
     }
   }
 

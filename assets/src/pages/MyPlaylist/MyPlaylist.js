@@ -66,7 +66,7 @@ class MyPlaylist {
       <ul class="episodes__list">
         ${ARRAY.map((e) => {
           const SRC = e.audio;
-          const START_SECONDS = AudioHelper.getAudioDurationMinus10(SRC);
+          const START_SECONDS = AudioHelper.getAudioDuration(SRC);
           const START_MINUTES_STR = AudioHelper.formatTime(START_SECONDS);
           return `
             <li>
